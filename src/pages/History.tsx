@@ -1,9 +1,10 @@
-import { Link } from 'react-router-dom'
-import { EXAM_SETS } from '../data/questions'
+import { Link, useNavigate } from 'react-router-dom'
+import { EXAM_SETS, QUESTIONS } from '../data/questions'
 import { PART_LABEL } from '../data/types'
-import { loadAttempts } from '../lib/storage'
+import { clearAttempts, loadAttempts, type Attempt } from '../lib/storage'
 
 export default function History() {
+  const navigate = useNavigate()
   const attempts = loadAttempts()
 
   function setLabel(setId: string) {
@@ -11,13 +12,43 @@ export default function History() {
     return EXAM_SETS.find((s) => s.id === setId)?.title ?? setId
   }
 
+  function openReview(attempt: Attempt) {
+    const questions = attempt.answers
+      .map((a) => QUESTIONS.find((q) => q.id === a.questionId))
+      .filter((q): q is (typeof QUESTIONS)[number] => q !== undefined)
+    navigate('/review', {
+      state: {
+        attempt,
+        questions,
+        title: `${setLabel(attempt.setId)} · พาท${PART_LABEL[attempt.part]}`,
+      },
+    })
+  }
+
+  function handleClear() {
+    if (confirm('ล้างประวัติการทำข้อสอบทั้งหมด? ทำแล้วกู้คืนไม่ได้')) {
+      clearAttempts()
+      navigate(0)
+    }
+  }
+
   return (
     <div className="space-y-4">
-      <div>
-        <Link to="/" className="text-sm text-indigo-600 hover:underline">
-          ← กลับหน้าแรก
-        </Link>
-        <h2 className="mt-2 text-xl font-semibold text-slate-900">ประวัติการทำข้อสอบ</h2>
+      <div className="flex items-start justify-between gap-3">
+        <div>
+          <Link to="/" className="text-sm text-indigo-600 hover:underline">
+            ← กลับหน้าแรก
+          </Link>
+          <h2 className="mt-2 text-xl font-semibold text-slate-900">ประวัติการทำข้อสอบ</h2>
+        </div>
+        {attempts.length > 0 && (
+          <button
+            onClick={handleClear}
+            className="shrink-0 rounded-lg border border-rose-200 px-3 py-1.5 text-xs font-medium text-rose-600 hover:bg-rose-50"
+          >
+            ล้างประวัติ
+          </button>
+        )}
       </div>
 
       {attempts.length === 0 ? (
@@ -28,9 +59,10 @@ export default function History() {
             const pct = Math.round((a.score / a.total) * 100)
             const date = new Date(a.dateISO)
             return (
-              <div
+              <button
                 key={a.id}
-                className="flex items-center justify-between gap-3 rounded-lg border border-slate-200 bg-white p-3"
+                onClick={() => openReview(a)}
+                className="flex w-full items-center justify-between gap-3 rounded-lg border border-slate-200 bg-white p-3 text-left transition hover:border-indigo-300 hover:shadow-sm"
               >
                 <div className="min-w-0">
                   <p className="truncate text-sm font-medium text-slate-900">
@@ -46,7 +78,7 @@ export default function History() {
                   </p>
                   <p className="text-xs text-slate-500">{pct}%</p>
                 </div>
-              </div>
+              </button>
             )
           })}
         </div>

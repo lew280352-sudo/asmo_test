@@ -1,5 +1,5 @@
 import type { ReactNode } from 'react'
-import { HashRouter, Routes, Route, Link } from 'react-router-dom'
+import { HashRouter, Routes, Route, Link, Navigate } from 'react-router-dom'
 import Home from './pages/Home'
 import SetDetail from './pages/SetDetail'
 import Exam from './pages/Exam'
@@ -34,6 +34,7 @@ export default function App() {
           <Route path="/exam" element={<Exam />} />
           <Route path="/review" element={<Review />} />
           <Route path="/history" element={<History />} />
+          <Route path="*" element={<Navigate to="/" replace />} />
         </Routes>
       </Layout>
     </HashRouter>

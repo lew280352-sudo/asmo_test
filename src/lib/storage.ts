@@ -35,6 +35,10 @@ export function saveAttempt(attempt: Attempt): void {
   localStorage.setItem(ATTEMPTS_KEY, JSON.stringify(attempts.slice(0, 200)))
 }
 
+export function clearAttempts(): void {
+  localStorage.removeItem(ATTEMPTS_KEY)
+}
+
 export function loadCompletedDailyDates(): string[] {
   try {
     const raw = localStorage.getItem(DAILY_KEY)

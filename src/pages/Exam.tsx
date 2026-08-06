@@ -3,6 +3,7 @@ import { useLocation, useNavigate } from 'react-router-dom'
 import type { Difficulty, PartKey, Question } from '../data/types'
 import { DIFFICULTY_LABEL } from '../data/types'
 import { saveAttempt, markDailyCompleted, type Attempt } from '../lib/storage'
+import Scratchpad from '../components/Scratchpad'
 
 interface ExamState {
   questions: Question[]
@@ -209,6 +210,8 @@ export default function Exam() {
           )}
         </div>
       </div>
+
+      <Scratchpad />
     </div>
   )
 }
