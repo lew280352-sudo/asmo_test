@@ -78,7 +78,10 @@ export default function Scratchpad() {
   }
 
   return (
-    <div className="fixed inset-0 z-40 flex flex-col bg-slate-50">
+    <div className="fixed inset-x-0 bottom-0 z-40 flex h-[50vh] flex-col overflow-hidden rounded-t-2xl border-t border-slate-200 bg-slate-50 shadow-2xl">
+      <div className="flex justify-center pt-1.5">
+        <div className="h-1 w-10 rounded-full bg-slate-300" />
+      </div>
       <div className="flex flex-wrap items-center justify-between gap-2 border-b border-slate-200 bg-white px-4 py-2.5">
         <span className="text-sm font-semibold text-slate-900">กระดาษทด</span>
         <div className="flex flex-wrap items-center gap-2">

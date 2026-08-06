@@ -8,6 +8,7 @@ export interface AttemptAnswer {
 
 export interface Attempt {
   id: string
+  profileId: string
   setId: string | 'daily'
   part: Difficulty | 'all'
   dateISO: string
@@ -18,9 +19,9 @@ export interface Attempt {
 }
 
 const ATTEMPTS_KEY = 'asmo_attempts'
-const DAILY_KEY = 'asmo_daily_dates'
+const DAILY_KEY_PREFIX = 'asmo_daily_dates_'
 
-export function loadAttempts(): Attempt[] {
+function loadAllAttempts(): Attempt[] {
   try {
     const raw = localStorage.getItem(ATTEMPTS_KEY)
     return raw ? (JSON.parse(raw) as Attempt[]) : []
@@ -29,33 +30,38 @@ export function loadAttempts(): Attempt[] {
   }
 }
 
+export function loadAttempts(profileId: string): Attempt[] {
+  return loadAllAttempts().filter((a) => a.profileId === profileId)
+}
+
 export function saveAttempt(attempt: Attempt): void {
-  const attempts = loadAttempts()
+  const attempts = loadAllAttempts()
   attempts.unshift(attempt)
-  localStorage.setItem(ATTEMPTS_KEY, JSON.stringify(attempts.slice(0, 200)))
+  localStorage.setItem(ATTEMPTS_KEY, JSON.stringify(attempts.slice(0, 500)))
 }
 
-export function clearAttempts(): void {
-  localStorage.removeItem(ATTEMPTS_KEY)
+export function clearAttempts(profileId: string): void {
+  const remaining = loadAllAttempts().filter((a) => a.profileId !== profileId)
+  localStorage.setItem(ATTEMPTS_KEY, JSON.stringify(remaining))
 }
 
-export function loadCompletedDailyDates(): string[] {
+export function loadCompletedDailyDates(profileId: string): string[] {
   try {
-    const raw = localStorage.getItem(DAILY_KEY)
+    const raw = localStorage.getItem(DAILY_KEY_PREFIX + profileId)
     return raw ? (JSON.parse(raw) as string[]) : []
   } catch {
     return []
   }
 }
 
-export function markDailyCompleted(dateKey: string): void {
-  const dates = loadCompletedDailyDates()
+export function markDailyCompleted(profileId: string, dateKey: string): void {
+  const dates = loadCompletedDailyDates(profileId)
   if (!dates.includes(dateKey)) {
     dates.push(dateKey)
-    localStorage.setItem(DAILY_KEY, JSON.stringify(dates))
+    localStorage.setItem(DAILY_KEY_PREFIX + profileId, JSON.stringify(dates))
   }
 }
 
-export function isDailyCompleted(dateKey: string): boolean {
-  return loadCompletedDailyDates().includes(dateKey)
+export function isDailyCompleted(profileId: string, dateKey: string): boolean {
+  return loadCompletedDailyDates(profileId).includes(dateKey)
 }

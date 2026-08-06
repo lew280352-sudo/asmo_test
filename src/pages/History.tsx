@@ -2,10 +2,12 @@ import { Link, useNavigate } from 'react-router-dom'
 import { EXAM_SETS, QUESTIONS } from '../data/questions'
 import { PART_LABEL } from '../data/types'
 import { clearAttempts, loadAttempts, type Attempt } from '../lib/storage'
+import { getActiveProfile } from '../lib/profile'
 
 export default function History() {
   const navigate = useNavigate()
-  const attempts = loadAttempts()
+  const profile = getActiveProfile()!
+  const attempts = loadAttempts(profile.id)
 
   function setLabel(setId: string) {
     if (setId === 'daily') return 'สุ่มรายวัน'
@@ -27,7 +29,7 @@ export default function History() {
 
   function handleClear() {
     if (confirm('ล้างประวัติการทำข้อสอบทั้งหมด? ทำแล้วกู้คืนไม่ได้')) {
-      clearAttempts()
+      clearAttempts(profile.id)
       navigate(0)
     }
   }

@@ -3,6 +3,7 @@ import { useLocation, useNavigate } from 'react-router-dom'
 import type { Difficulty, PartKey, Question } from '../data/types'
 import { DIFFICULTY_LABEL } from '../data/types'
 import { saveAttempt, markDailyCompleted, type Attempt } from '../lib/storage'
+import { getActiveProfile } from '../lib/profile'
 import Scratchpad from '../components/Scratchpad'
 
 interface ExamState {
@@ -81,6 +82,7 @@ export default function Exam() {
 
     const attempt: Attempt = {
       id: `${Date.now()}`,
+      profileId: getActiveProfile()!.id,
       setId: state!.setId,
       part: state!.part === 'all' ? 'all' : (state!.part as Difficulty),
       dateISO: new Date().toISOString(),
@@ -90,7 +92,7 @@ export default function Exam() {
       answers: attemptAnswers,
     }
     saveAttempt(attempt)
-    if (state!.dateKey) markDailyCompleted(state!.dateKey)
+    if (state!.dateKey) markDailyCompleted(attempt.profileId, state!.dateKey)
 
     navigate('/review', { state: { attempt, questions, title: state!.title }, replace: true })
   }

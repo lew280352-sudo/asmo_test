@@ -3,11 +3,13 @@ import { EXAM_SETS, QUESTIONS } from '../data/questions'
 import { timeLimitMinutes } from '../data/types'
 import { getDailyQuestions, todayDateKey } from '../lib/dailyRandom'
 import { isDailyCompleted } from '../lib/storage'
+import { getActiveProfile } from '../lib/profile'
 
 export default function Home() {
   const navigate = useNavigate()
+  const profile = getActiveProfile()!
   const dateKey = todayDateKey()
-  const dailyDone = isDailyCompleted(dateKey)
+  const dailyDone = isDailyCompleted(profile.id, dateKey)
 
   function startDaily() {
     const questions = getDailyQuestions(dateKey)
@@ -41,7 +43,7 @@ export default function Home() {
           </button>
         </div>
         {dailyDone && (
-          <p className="mt-2 text-xs text-indigo-600">คุณทำชุดวันนี้ไปแล้ว ✓ ทำซ้ำได้แต่จะไม่นับซ้ำในสถิติ</p>
+          <p className="mt-2 text-xs text-indigo-600">คุณทำชุดวันนี้ไปแล้ว ✓ ทำซ้ำได้ ระบบจะบันทึกทุกครั้งที่ทำ</p>
         )}
       </section>
 
