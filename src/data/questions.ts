@@ -23,7 +23,7 @@ export const EXAM_SETS: ExamSet[] = [
   },
 ]
 
-// โจทย์เป็นภาษาอังกฤษต้นฉบับ (ไม่แปล) เพื่อฝึกภาษาไปพร้อมกัน ส่วนเฉลย/คำอธิบายเป็นภาษาไทย
+// โจทย์เป็นภาษาอังกฤษต้นฉบับ (ไม่แปล) เพื่อฝึกภาษาไปพร้อมกัน มีคำแปลไทยของโจทย์แถมในเฉลย ส่วนคำอธิบายวิธีทำเป็นภาษาไทย
 export const QUESTIONS: Question[] = [
   // ===== ชุดที่ 1 : ง่าย =====
   {
@@ -32,6 +32,7 @@ export const QUESTIONS: Question[] = [
     difficulty: 'easy',
     topic: 'พีชคณิต',
     questionText: 'If x + 5 = 12, what is the value of 2x - 3?',
+    questionTranslationTh: 'ถ้า x + 5 = 12 แล้ว 2x - 3 มีค่าเท่าใด?',
     choices: ['9', '11', '14', '17'],
     answer: '11',
     explanation: 'จาก x + 5 = 12 จะได้ x = 7 แทนค่าใน 2x - 3 = 2(7) - 3 = 11',
@@ -42,6 +43,7 @@ export const QUESTIONS: Question[] = [
     difficulty: 'easy',
     topic: 'ลำดับและอนุกรม',
     questionText: 'What is the sum of the even numbers from 2 to 20?',
+    questionTranslationTh: 'ผลบวกของจำนวนคู่ตั้งแต่ 2 ถึง 20 มีค่าเท่าใด?',
     choices: ['100', '105', '110', '120'],
     answer: '110',
     explanation: '2+4+...+20 = 2×(1+2+...+10) = 2×55 = 110',
@@ -52,6 +54,7 @@ export const QUESTIONS: Question[] = [
     difficulty: 'easy',
     topic: 'เรขาคณิต',
     questionText: 'A right triangle has legs of length 6 and 8 units. What is the length of the hypotenuse?',
+    questionTranslationTh: 'สามเหลี่ยมมุมฉากมีด้านประกอบมุมฉากยาว 6 และ 8 หน่วย ด้านตรงข้ามมุมฉากยาวเท่าใด?',
     choices: ['10', '12', '14', '16'],
     answer: '10',
     explanation: 'ตามทฤษฎีบทพีทาโกรัส √(6² + 8²) = √(36+64) = √100 = 10',
@@ -62,6 +65,7 @@ export const QUESTIONS: Question[] = [
     difficulty: 'easy',
     topic: 'อัตราส่วน',
     questionText: 'If a : b = 3 : 4 and b : c = 2 : 5, what is a : c?',
+    questionTranslationTh: 'ถ้า a : b = 3 : 4 และ b : c = 2 : 5 แล้ว a : c เท่ากับข้อใด?',
     choices: ['3:5', '3:10', '3:8', '3:7'],
     answer: '3:10',
     explanation: 'ปรับ b ให้เท่ากัน: a:b = 3:4 และ b:c = 4:10 (คูณด้วย 2) ดังนั้น a:b:c = 3:4:10 → a:c = 3:10',
@@ -72,6 +76,7 @@ export const QUESTIONS: Question[] = [
     difficulty: 'easy',
     topic: 'ทฤษฎีจำนวน',
     questionText: 'What is the largest prime number less than 30?',
+    questionTranslationTh: 'จำนวนเฉพาะที่มากที่สุดที่น้อยกว่า 30 คือข้อใด?',
     choices: ['23', '27', '29', '28'],
     answer: '29',
     explanation: '29 เป็นจำนวนเฉพาะและเป็นจำนวนเฉพาะที่มากที่สุดซึ่งน้อยกว่า 30 (27 หารด้วย 3 ลงตัว, 28 เป็นจำนวนคู่)',
@@ -84,6 +89,7 @@ export const QUESTIONS: Question[] = [
     difficulty: 'medium',
     topic: 'พีชคณิต',
     questionText: 'If x² - 5x + 6 = 0, what is the sum of its two roots?',
+    questionTranslationTh: 'ถ้า x² - 5x + 6 = 0 ผลบวกของคำตอบทั้งสองเท่ากับเท่าใด?',
     choices: ['1', '5', '6', '-5'],
     answer: '5',
     explanation: 'ผลบวกของคำตอบของสมการ ax²+bx+c=0 คือ -b/a = -(-5)/1 = 5 (คำตอบคือ 2 และ 3)',
@@ -95,6 +101,8 @@ export const QUESTIONS: Question[] = [
     topic: 'ความน่าจะเป็น',
     questionText:
       'A box contains 4 red balls, 5 blue balls, and 3 green balls. One ball is drawn at random. What is the probability of drawing a blue or green ball?',
+    questionTranslationTh:
+      'กล่องใบหนึ่งมีลูกบอลสีแดง 4 ลูก สีน้ำเงิน 5 ลูก และสีเขียว 3 ลูก สุ่มหยิบ 1 ลูก ความน่าจะเป็นที่จะได้ลูกบอลสีน้ำเงินหรือสีเขียวเท่ากับเท่าใด?',
     choices: ['1/3', '1/2', '2/3', '3/4'],
     answer: '2/3',
     explanation: 'รวมทั้งหมด 12 ลูก สีน้ำเงิน+เขียว = 8 ลูก ความน่าจะเป็น = 8/12 = 2/3',
@@ -105,6 +113,7 @@ export const QUESTIONS: Question[] = [
     difficulty: 'medium',
     topic: 'เรขาคณิต',
     questionText: 'The sum of the interior angles of a certain regular polygon is 1440°. How many sides does it have?',
+    questionTranslationTh: 'ผลรวมมุมภายในของรูปหลายเหลี่ยมด้านเท่ามุมเท่าชนิดหนึ่งเท่ากับ 1440 องศา รูปนี้มีกี่ด้าน?',
     choices: ['8', '9', '10', '12'],
     answer: '10',
     explanation: '(n-2)×180 = 1440 → n-2 = 8 → n = 10',
@@ -115,6 +124,7 @@ export const QUESTIONS: Question[] = [
     difficulty: 'medium',
     topic: 'ลอการิทึม',
     questionText: 'If log₂(x) = 5, what is the value of x?',
+    questionTranslationTh: 'ถ้า log₂(x) = 5 แล้ว x มีค่าเท่าใด?',
     choices: ['10', '16', '25', '32'],
     answer: '32',
     explanation: 'log₂(x) = 5 หมายความว่า x = 2⁵ = 32',
@@ -125,6 +135,7 @@ export const QUESTIONS: Question[] = [
     difficulty: 'medium',
     topic: 'อัตราเร็ว',
     questionText: 'A car travels at an average speed of 60 km/h for 2 hours 30 minutes. How far does it travel?',
+    questionTranslationTh: 'รถยนต์คันหนึ่งวิ่งด้วยความเร็วเฉลี่ย 60 กม./ชม. เป็นเวลา 2 ชั่วโมง 30 นาที จะวิ่งได้ระยะทางกี่กิโลเมตร?',
     choices: ['120', '150', '180', '200'],
     answer: '150',
     explanation: 'ระยะทาง = อัตราเร็ว × เวลา = 60 × 2.5 = 150 กม.',
@@ -137,6 +148,7 @@ export const QUESTIONS: Question[] = [
     difficulty: 'hard',
     topic: 'พีชคณิต',
     questionText: 'Find the sum of all solutions of the equation |2x - 3| = 7.',
+    questionTranslationTh: 'จงหาผลบวกของคำตอบทั้งหมดของสมการ |2x - 3| = 7',
     choices: ['3', '5', '7', '-2'],
     answer: '3',
     explanation: '2x-3=7 → x=5 หรือ 2x-3=-7 → x=-2 ผลบวก = 5+(-2) = 3',
@@ -147,6 +159,7 @@ export const QUESTIONS: Question[] = [
     difficulty: 'hard',
     topic: 'พีชคณิต',
     questionText: 'Let a, b be positive integers with a + b = 20. Find the maximum possible value of a × b.',
+    questionTranslationTh: 'กำหนดให้ a, b เป็นจำนวนเต็มบวกที่ a + b = 20 จงหาค่ามากที่สุดที่เป็นไปได้ของ a × b',
     choices: ['91', '96', '99', '100'],
     answer: '100',
     explanation: 'ผลคูณมากที่สุดเมื่อ a และ b ใกล้เคียงกันที่สุด คือ a=b=10 ได้ผลคูณ = 100',
@@ -157,6 +170,7 @@ export const QUESTIONS: Question[] = [
     difficulty: 'hard',
     topic: 'ความน่าจะเป็น',
     questionText: 'A fair coin is tossed 4 times. What is the probability of getting at least 3 heads?',
+    questionTranslationTh: 'ในการโยนเหรียญที่เที่ยงตรง 4 ครั้ง ความน่าจะเป็นที่จะได้หัวอย่างน้อย 3 ครั้งเท่ากับเท่าใด?',
     choices: ['1/4', '5/16', '3/8', '1/2'],
     answer: '5/16',
     explanation: 'P(หัว 3 ครั้ง) = C(4,3)/16 = 4/16, P(หัว 4 ครั้ง) = 1/16 รวม = 5/16',
@@ -167,6 +181,7 @@ export const QUESTIONS: Question[] = [
     difficulty: 'hard',
     topic: 'เรขาคณิต',
     questionText: 'Triangle ABC has sides AB = 13, BC = 14, CA = 15 units. Find the area of the triangle.',
+    questionTranslationTh: 'สามเหลี่ยม ABC มีด้าน AB = 13, BC = 14, CA = 15 หน่วย จงหาพื้นที่ของสามเหลี่ยมนี้',
     choices: ['81', '84', '90', '96'],
     answer: '84',
     explanation: 'ใช้สูตรของเฮรอน s=(13+14+15)/2=21 พื้นที่ = √(21×8×7×6) = √7056 = 84',
@@ -177,6 +192,7 @@ export const QUESTIONS: Question[] = [
     difficulty: 'hard',
     topic: 'ทฤษฎีจำนวน',
     questionText: 'What is the smallest positive integer n such that n! is divisible by 10000?',
+    questionTranslationTh: 'จำนวนเต็มบวก n ที่น้อยที่สุดที่ทำให้ n! หารด้วย 10000 ลงตัว คือข้อใด?',
     choices: ['15', '18', '20', '25'],
     answer: '20',
     explanation: '10000 = 2⁴×5⁴ ต้องการจำนวน 5 อย่างน้อย 4 ตัวใน n! ซึ่งเกิดที่ n=20 (จาก 5,10,15,20) และจำนวน 2 เกินพอแล้ว',
@@ -189,6 +205,7 @@ export const QUESTIONS: Question[] = [
     difficulty: 'easy',
     topic: 'พีชคณิต',
     questionText: 'If 3x - 7 = 14, what is the value of x?',
+    questionTranslationTh: 'ถ้า 3x - 7 = 14 แล้ว x มีค่าเท่าใด?',
     choices: ['5', '6', '7', '8'],
     answer: '7',
     explanation: '3x = 21 → x = 7',
@@ -199,6 +216,7 @@ export const QUESTIONS: Question[] = [
     difficulty: 'easy',
     topic: 'ร้อยละ',
     questionText: 'A class has 40 students, 24 of whom are boys and the rest are girls. What percentage of the class are girls?',
+    questionTranslationTh: 'นักเรียนกลุ่มหนึ่งมี 40 คน เป็นชาย 24 คน ที่เหลือเป็นหญิง คิดเป็นร้อยละเท่าใดของนักเรียนหญิง?',
     choices: ['30%', '35%', '40%', '45%'],
     answer: '40%',
     explanation: 'นักเรียนหญิง = 40-24 = 16 คน คิดเป็น 16/40 = 40%',
@@ -209,6 +227,7 @@ export const QUESTIONS: Question[] = [
     difficulty: 'easy',
     topic: 'เลขยกกำลัง',
     questionText: 'What is the value of 2³ + 3²?',
+    questionTranslationTh: 'ค่าของ 2³ + 3² เท่ากับเท่าใด?',
     choices: ['15', '17', '19', '21'],
     answer: '17',
     explanation: '2³ = 8, 3² = 9, ผลบวก = 17',
@@ -219,6 +238,7 @@ export const QUESTIONS: Question[] = [
     difficulty: 'easy',
     topic: 'เรขาคณิต',
     questionText: 'A rectangle has length 12 cm and width 5 cm. What is the length of its diagonal?',
+    questionTranslationTh: 'สี่เหลี่ยมผืนผ้ามีความยาว 12 ซม. และกว้าง 5 ซม. เส้นทแยงมุมยาวเท่าใด?',
     choices: ['11', '12', '13', '14'],
     answer: '13',
     explanation: '√(12²+5²) = √(144+25) = √169 = 13',
@@ -229,6 +249,7 @@ export const QUESTIONS: Question[] = [
     difficulty: 'easy',
     topic: 'สถิติ',
     questionText: 'What is the arithmetic mean of 4, 8, 15, 16, 17?',
+    questionTranslationTh: 'ค่าเฉลี่ยเลขคณิตของ 4, 8, 15, 16, 17 เท่ากับเท่าใด?',
     choices: ['10', '11', '12', '13'],
     answer: '12',
     explanation: 'ผลบวก = 60, หารด้วยจำนวนข้อมูล 5 = 12',
@@ -241,6 +262,7 @@ export const QUESTIONS: Question[] = [
     difficulty: 'medium',
     topic: 'ฟังก์ชัน',
     questionText: 'If f(x) = 2x² - 3x + 1, what is f(-2)?',
+    questionTranslationTh: 'ถ้า f(x) = 2x² - 3x + 1 แล้ว f(-2) มีค่าเท่าใด?',
     choices: ['11', '13', '15', '17'],
     answer: '15',
     explanation: 'f(-2) = 2(4) - 3(-2) + 1 = 8 + 6 + 1 = 15',
@@ -251,6 +273,7 @@ export const QUESTIONS: Question[] = [
     difficulty: 'medium',
     topic: 'ลำดับเลขคณิต',
     questionText: 'An arithmetic sequence has first term 5 and common difference 3. What is its 20th term?',
+    questionTranslationTh: 'ลำดับเลขคณิตมีพจน์แรกเท่ากับ 5 และผลต่างร่วมเท่ากับ 3 พจน์ที่ 20 มีค่าเท่าใด?',
     choices: ['58', '60', '62', '65'],
     answer: '62',
     explanation: 'a₂₀ = 5 + (20-1)×3 = 5 + 57 = 62',
@@ -262,6 +285,8 @@ export const QUESTIONS: Question[] = [
     topic: 'ความน่าจะเป็น',
     questionText:
       'A box contains ping-pong balls numbered 1 to 10, one of each. One ball is drawn at random. What is the probability of drawing a number divisible by 3?',
+    questionTranslationTh:
+      'กล่องใบหนึ่งมีลูกปิงปองกำกับเลข 1-10 อย่างละ 1 ลูก สุ่มหยิบ 1 ลูก ความน่าจะเป็นที่ได้เลขที่หารด้วย 3 ลงตัวเท่ากับเท่าใด?',
     choices: ['1/5', '3/10', '2/5', '1/2'],
     answer: '3/10',
     explanation: 'เลขที่หารด้วย 3 ลงตัวใน 1-10 คือ 3, 6, 9 รวม 3 ตัว ความน่าจะเป็น = 3/10',
@@ -272,6 +297,7 @@ export const QUESTIONS: Question[] = [
     difficulty: 'medium',
     topic: 'เรขาคณิต',
     questionText: 'What is the measure of each interior angle of a regular hexagon?',
+    questionTranslationTh: 'มุมภายในของรูปหกเหลี่ยมด้านเท่ามุมเท่ามีค่ามุมละกี่องศา?',
     choices: ['100', '108', '120', '135'],
     answer: '120',
     explanation: '(6-2)×180/6 = 720/6 = 120 องศา',
@@ -282,6 +308,7 @@ export const QUESTIONS: Question[] = [
     difficulty: 'medium',
     topic: 'เลขยกกำลัง',
     questionText: 'If 2^x = 32, what is the value of x?',
+    questionTranslationTh: 'ถ้า 2^x = 32 แล้ว x มีค่าเท่าใด?',
     choices: ['4', '5', '6', '16'],
     answer: '5',
     explanation: '2⁵ = 32 ดังนั้น x = 5',
@@ -294,6 +321,7 @@ export const QUESTIONS: Question[] = [
     difficulty: 'hard',
     topic: 'การจัดหมู่',
     questionText: 'In how many ways can the letters of the word "MATHS" be arranged (all letters distinct)?',
+    questionTranslationTh: 'จำนวนวิธีจัดเรียงตัวอักษรในคำว่า "MATHS" ทั้งหมดมีกี่วิธี (ตัวอักษรไม่ซ้ำกัน)?',
     choices: ['60', '100', '120', '150'],
     answer: '120',
     explanation: 'มีตัวอักษร 5 ตัวไม่ซ้ำกัน จำนวนวิธี = 5! = 120',
@@ -304,6 +332,7 @@ export const QUESTIONS: Question[] = [
     difficulty: 'hard',
     topic: 'พีชคณิต',
     questionText: 'Let x and y be positive integers with xy = 36. Find the smallest possible value of x + y.',
+    questionTranslationTh: 'ให้ x และ y เป็นจำนวนเต็มบวกที่ xy = 36 จงหาผลบวกที่น้อยที่สุดที่เป็นไปได้ของ x + y',
     choices: ['10', '12', '13', '15'],
     answer: '12',
     explanation: 'คู่ตัวประกอบของ 36 ที่ให้ผลบวกน้อยสุดคือ 6×6 = 36 ได้ผลบวก 12',
@@ -314,6 +343,7 @@ export const QUESTIONS: Question[] = [
     difficulty: 'hard',
     topic: 'เรขาคณิต',
     questionText: 'A circle has radius 7 units. Find the area of a sector with a central angle of 90° (use π ≈ 22/7).',
+    questionTranslationTh: 'วงกลมวงหนึ่งมีรัศมี 7 หน่วย จงหาพื้นที่ของเซกเตอร์ที่มีมุมที่จุดศูนย์กลาง 90 องศา (ใช้ π ≈ 22/7)',
     choices: ['30.5', '35.5', '38.5', '44'],
     answer: '38.5',
     explanation: 'พื้นที่เซกเตอร์ = (90/360) × 22/7 × 7² = 1/4 × 154 = 38.5',
@@ -324,6 +354,7 @@ export const QUESTIONS: Question[] = [
     difficulty: 'hard',
     topic: 'การจัดหมู่',
     questionText: 'Find the value of n such that C(n,2) = 45.',
+    questionTranslationTh: 'จงหาค่าของ n ที่ทำให้ C(n,2) = 45',
     choices: ['8', '9', '10', '12'],
     answer: '10',
     explanation: 'n(n-1)/2 = 45 → n(n-1) = 90 → n = 10 (เพราะ 10×9 = 90)',
@@ -335,6 +366,8 @@ export const QUESTIONS: Question[] = [
     topic: 'ทฤษฎีจำนวน',
     questionText:
       'Let a be a positive integer. If a leaves remainder 3 when divided by 7, and remainder 2 when divided by 5, find the smallest possible value of a.',
+    questionTranslationTh:
+      'กำหนดให้ a เป็นจำนวนเต็มบวก ถ้า a หารด้วย 7 เหลือเศษ 3 และ a หารด้วย 5 เหลือเศษ 2 จงหาค่า a ที่น้อยที่สุด',
     choices: ['12', '17', '22', '24'],
     answer: '17',
     explanation: 'a ≡ 3 (mod 7): 3,10,17,24,... ตรวจ mod 5 ทีละตัว 17 mod 5 = 2 ตรงเงื่อนไข ดังนั้น a=17',
@@ -348,6 +381,8 @@ export const QUESTIONS: Question[] = [
     topic: 'การนับสี่เหลี่ยมผืนผ้า',
     questionText:
       'A row of 3 unit squares contains 6 rectangles of all sizes. How many rectangles are in a row of 23 unit squares?',
+    questionTranslationTh:
+      'แถวของสี่เหลี่ยมจัตุรัสหน่วย 3 ช่อง มีสี่เหลี่ยมผืนผ้าทุกขนาดรวม 6 รูป ถ้าแถวมี 23 ช่อง จะมีสี่เหลี่ยมผืนผ้าทั้งหมดกี่รูป?',
     choices: ['210', '231', '253', '276'],
     answer: '276',
     explanation:
@@ -360,6 +395,7 @@ export const QUESTIONS: Question[] = [
     difficulty: 'easy',
     topic: 'ทฤษฎีจำนวน (เลขโดดหลักหน่วย)',
     questionText: 'Find the units digit of 3^2025 + 9^677.',
+    questionTranslationTh: 'จงหาเลขโดดหลักหน่วยของ 3^2025 + 9^677',
     answer: '2',
     explanation:
       'เลขหลักหน่วยของ 3^n วนซ้ำทุก 4 ครั้ง (3,9,7,1) และ 2025 mod 4 = 1 จึงได้หลักหน่วยเป็น 3 ส่วน 9^n วนซ้ำทุก 2 ครั้ง (9,1) และ 677 เป็นเลขคี่ จึงได้หลักหน่วยเป็น 9 รวมกัน 3+9=12 หลักหน่วยคือ 2',
@@ -372,6 +408,8 @@ export const QUESTIONS: Question[] = [
     topic: 'พีชคณิต (สมการเชิงเส้น)',
     questionText:
       'Nick thinks of an integer, multiplies by 4, subtracts 30, multiplies the result by 2, then subtracts 10. The result is a two-digit number. Find the largest integer Nick could have started with.',
+    questionTranslationTh:
+      'นิคคิดจำนวนเต็มขึ้นมา คูณด้วย 4 ลบด้วย 30 นำผลลัพธ์คูณด้วย 2 แล้วลบด้วย 10 ได้ผลลัพธ์เป็นจำนวนสองหลัก จงหาจำนวนเต็มที่มากที่สุดที่นิคคิดขึ้นได้',
     answer: '21',
     explanation:
       'ให้จำนวนที่นิคคิดคือ n ผลลัพธ์สุดท้ายคือ (4n-30)×2-10 = 8n-70 ต้องอยู่ระหว่าง 10 ถึง 99: 10≤8n-70≤99 ได้ 10≤n≤21.125 จำนวนเต็มที่มากที่สุดคือ 21 (ตรวจสอบ: 8×21-70=98 ใช้ได้)',
@@ -386,6 +424,8 @@ export const QUESTIONS: Question[] = [
     topic: 'ทฤษฎีจำนวน (การหารลงตัว)',
     questionText:
       'Suppose S is the product of three consecutive integers and S is divisible by 7. Which of the following is not necessarily a factor of S?',
+    questionTranslationTh:
+      'กำหนดให้ S เป็นผลคูณของจำนวนเต็มสามจำนวนที่เรียงติดกัน และ S หารด้วย 7 ลงตัว ข้อใดต่อไปนี้ไม่จำเป็นต้องเป็นตัวประกอบของ S เสมอไป?',
     choices: ['6', '14', '21', '28', '42'],
     answer: '28',
     explanation:
@@ -398,6 +438,8 @@ export const QUESTIONS: Question[] = [
     difficulty: 'medium',
     topic: 'การนับ (หลักการรวม-ตัด)',
     questionText: 'How many positive integers not greater than 2022 are divisible by 3 or 4 but not divisible by 5?',
+    questionTranslationTh:
+      'จำนวนเต็มบวกที่ไม่เกิน 2022 ที่หารด้วย 3 หรือ 4 ลงตัว แต่หารด้วย 5 ไม่ลงตัว มีทั้งหมดกี่จำนวน?',
     choices: ['775', '776', '809', '911', '944'],
     answer: '809',
     explanation:
@@ -411,6 +453,8 @@ export const QUESTIONS: Question[] = [
     topic: 'อัตราเร็ว (การเคลื่อนที่วงกลม)',
     questionText:
       'Fibo and Aci run in opposite directions on a circular track at constant speeds from the same point. They meet first after Fibo runs 120 m, and meet again after Aci runs 200 m past the first meeting point. Find the track length.',
+    questionTranslationTh:
+      'ฟีโบและอาซีวิ่งสวนทางกันบนลู่วิ่งวงกลมด้วยความเร็วคงที่จากจุดเดียวกัน พบกันครั้งแรกหลังฟีโบวิ่งได้ 120 เมตร แล้วพบกันอีกครั้งหลังอาซีวิ่งเลยจุดพบกันครั้งแรกไป 200 เมตร ลู่วิ่งยาวเท่าใด?',
     choices: ['220', '320', '440', '520', '660'],
     answer: '320',
     explanation:
@@ -423,6 +467,8 @@ export const QUESTIONS: Question[] = [
     difficulty: 'medium',
     topic: 'การจัดหมู่ (stars and bars)',
     questionText: '88 one-dollar bills are distributed to 8 students, each receiving at least $10. In how many ways can this be done?',
+    questionTranslationTh:
+      'แจกธนบัตรใบละ 1 ดอลลาร์ 88 ใบ ให้นักเรียน 8 คน โดยแต่ละคนต้องได้อย่างน้อย 10 ดอลลาร์ มีวิธีแจกได้กี่วิธี?',
     choices: ['8', '585', '6435', '64,276,915,527'],
     answer: '6435',
     explanation:
@@ -435,6 +481,8 @@ export const QUESTIONS: Question[] = [
     difficulty: 'medium',
     topic: 'ทฤษฎีจำนวน (อนุกรม)',
     questionText: 'The sum of 18 consecutive positive integers is a perfect square. Find the smallest possible value of this sum.',
+    questionTranslationTh:
+      'ผลบวกของจำนวนเต็มบวกเรียงติดกัน 18 จำนวน เป็นจำนวนกำลังสองสมบูรณ์ จงหาค่าที่น้อยที่สุดที่เป็นไปได้ของผลบวกนี้',
     answer: '225',
     explanation:
       'ให้จำนวนแรกเป็น a ผลบวก = 18a+(0+1+...+17) = 18a+153 = 9(2a+17) เนื่องจาก 9 เป็นกำลังสองอยู่แล้ว จึงต้องการให้ (2a+17) เป็นกำลังสองคี่ที่น้อยที่สุด (ต้องมากกว่า 17) คือ 25 แก้ได้ a=4 ผลบวก = 9×25 = 225',
@@ -446,6 +494,7 @@ export const QUESTIONS: Question[] = [
     difficulty: 'medium',
     topic: 'ทฤษฎีจำนวน (แฟกทอเรียล)',
     questionText: 'Find the smallest natural number x such that x! is divisible by 1000.',
+    questionTranslationTh: 'จงหาจำนวนนับ x ที่น้อยที่สุดที่ทำให้ x! หารด้วย 1000 ลงตัว',
     answer: '15',
     explanation:
       '1000 = 2³×5³ ต้องการจำนวน 5 อย่างน้อย 3 ตัวใน x! ซึ่งเกิดขึ้นครั้งแรกที่ x=15 (จาก 5, 10, 15) ส่วนจำนวน 2 มีมากเกินพอแล้ว',
@@ -457,6 +506,7 @@ export const QUESTIONS: Question[] = [
     difficulty: 'medium',
     topic: 'ทฤษฎีจำนวน (ห.ร.ม.)',
     questionText: 'Find the largest number k that divides 5430, 5814, and 5958, leaving the same remainder each time.',
+    questionTranslationTh: 'จงหาจำนวน k ที่มากที่สุดที่หาร 5430, 5814 และ 5958 แล้วเหลือเศษเท่ากันทุกจำนวน',
     answer: '48',
     explanation:
       'เมื่อหารแล้วเหลือเศษเท่ากัน k ต้องหารผลต่างระหว่างจำนวนเหล่านี้ลงตัว: 5814-5430=384, 5958-5814=144, 5958-5430=528 ห.ร.ม. ของ 384, 144, 528 คือ 48 ดังนั้น k=48',
@@ -471,6 +521,8 @@ export const QUESTIONS: Question[] = [
     topic: 'การนับบนตาราง',
     questionText:
       'In an 11×11 grid, the center square is colored black. How many squares of any size drawn on the grid do NOT contain the black square?',
+    questionTranslationTh:
+      'ตารางขนาด 11×11 มีช่องกึ่งกลางระบายสีดำ จงหาจำนวนรูปสี่เหลี่ยมจัตุรัสทุกขนาดบนตารางที่ไม่มีช่องสีดำอยู่ภายใน',
     choices: ['120', '146', '360', '386', '506'],
     answer: '360',
     explanation:
@@ -483,6 +535,7 @@ export const QUESTIONS: Question[] = [
     difficulty: 'hard',
     topic: 'เรขาคณิตทรงตัน (การนับระนาบ)',
     questionText: 'How many distinct planes pass through at least three vertices of a cube?',
+    questionTranslationTh: 'มีระนาบที่แตกต่างกันกี่ระนาบที่ผ่านจุดยอดอย่างน้อยสามจุดของลูกบาศก์?',
     choices: ['6', '8', '14', '20', 'None of these'],
     answer: '20',
     explanation:
@@ -496,6 +549,8 @@ export const QUESTIONS: Question[] = [
     topic: 'เรขาคณิตทรงตัน (ปริมาตร)',
     questionText:
       'A regular octahedron is formed by joining the centers of the faces of a cube with side length 2. Find its volume.',
+    questionTranslationTh:
+      'รูปแปดหน้าปกติเกิดจากการเชื่อมจุดศูนย์กลางหน้าทั้งหกของลูกบาศก์ด้านยาว 2 หน่วย รูปแปดหน้านี้มีปริมาตรเท่าใด?',
     choices: ['1/2', '2/3', '4/3', '2', 'None of these'],
     answer: '4/3',
     explanation:
@@ -509,6 +564,8 @@ export const QUESTIONS: Question[] = [
     topic: 'เรขาคณิต (มุม)',
     questionText:
       'Triangle ABC has a right angle at A with AB = AC. Points D, E lie on BC such that BD:DE:EC = 3:5:4. Find angle DAE. (In degrees — answer with the number only.)',
+    questionTranslationTh:
+      'สามเหลี่ยม ABC มีมุม A เป็นมุมฉาก และ AB=AC จุด D, E อยู่บน BC โดย BD:DE:EC = 3:5:4 จงหาขนาดมุม DAE (หน่วยองศา ตอบเฉพาะตัวเลข)',
     answer: '45',
     explanation:
       'เนื่องจาก BD:DE:EC = 3:5:4 (สัดส่วนพีทาโกรัส 3-4-5) จะได้ BD²+EC²=DE² ซึ่งเป็นเงื่อนไขคลาสสิกที่ทำให้มุม DAE เท่ากับครึ่งหนึ่งของมุม BAC เสมอ นั่นคือ 90/2 = 45 องศา',
@@ -521,6 +578,8 @@ export const QUESTIONS: Question[] = [
     topic: 'ทฤษฎีจำนวน (หลักและการหารลงตัว)',
     questionText:
       'How many three-digit positive integers have every digit not divisible by 2, 3, or 5, and the number itself also not divisible by 2, 3, or 5?',
+    questionTranslationTh:
+      'จำนวนเต็มบวกสามหลักที่ทุกหลักไม่หารด้วย 2, 3 หรือ 5 ลงตัว และตัวจำนวนเองก็ไม่หารด้วย 2, 3 หรือ 5 ลงตัวด้วย มีทั้งหมดกี่จำนวน?',
     answer: '0',
     explanation:
       'หลักที่ไม่หารด้วย 2, 3, 5 ลงตัวมีเพียง 1 กับ 7 เท่านั้น แต่ทั้ง 1 และ 7 ต่างเหลือเศษ 1 เมื่อหารด้วย 3 ผลรวมของเลขสามหลักที่สร้างจากหลักเหล่านี้จึงหารด้วย 3 ลงตัวเสมอ ขัดแย้งกับเงื่อนไข จึงไม่มีจำนวนใดสอดคล้องเลย คำตอบคือ 0',
@@ -532,6 +591,7 @@ export const QUESTIONS: Question[] = [
     difficulty: 'hard',
     topic: 'การจัดหมู่ (การเรียงสับเปลี่ยน)',
     questionText: 'In how many ways can the letters of the word "MURMUR" be arranged such that no two identical letters are adjacent?',
+    questionTranslationTh: 'คำว่า "MURMUR" สามารถเรียงตัวอักษรใหม่ได้กี่วิธี โดยตัวอักษรที่ซ้ำกันต้องไม่อยู่ติดกัน?',
     answer: '30',
     explanation:
       'การเรียงทั้งหมด = 6!/(2!2!2!) = 90 วิธี ใช้หลักการรวม-ตัดสำหรับคู่ตัวอักษรซ้ำ MM, UU, RR ที่อยู่ติดกัน ได้ผลรวมการเรียงที่มีคู่ใดคู่หนึ่งติดกัน 60 วิธี ดังนั้นการเรียงที่ไม่มีตัวอักษรซ้ำติดกันเลย = 90-60 = 30 วิธี',
@@ -543,6 +603,7 @@ export const QUESTIONS: Question[] = [
     difficulty: 'hard',
     topic: 'ทฤษฎีจำนวน (ลอการิทึม)',
     questionText: 'If 2^2001 and 5^2001 are written out in full, how many digits do they have in total?',
+    questionTranslationTh: 'ถ้าเขียน 2^2001 และ 5^2001 เต็มรูปแบบ จะมีจำนวนหลักรวมกันทั้งหมดกี่หลัก?',
     answer: '2002',
     explanation:
       'จำนวนหลักของ N คือ ⌊log₁₀N⌋+1 เนื่องจาก log₁₀2+log₁₀5=1 ผลรวมของ 2001log₁₀2 และ 2001log₁₀5 เท่ากับ 2001 พอดี และเศษทศนิยมของทั้งสองรวมกันได้ 1 พอดี ทำให้ผลรวมจำนวนหลัก = 2001-1+2 = 2002',
@@ -555,6 +616,8 @@ export const QUESTIONS: Question[] = [
     topic: 'พีชคณิต (เอกลักษณ์สมมาตร)',
     questionText:
       'Find natural numbers x, y, z satisfying x³+y³+z³=3xyz and x²=2(y+z). (What is the common value x=y=z? Answer with the number only.)',
+    questionTranslationTh:
+      'จงหาจำนวนนับ x, y, z ที่สอดคล้องกับ x³+y³+z³=3xyz และ x²=2(y+z) (คำตอบคือ x=y=z เท่ากับเท่าใด ตอบเฉพาะตัวเลข)',
     answer: '4',
     explanation:
       'จากเอกลักษณ์ x³+y³+z³-3xyz=(x+y+z)(x²+y²+z²-xy-yz-zx) และพจน์หลังเท่ากับ ½[(x-y)²+(y-z)²+(z-x)²] ซึ่งเป็นศูนย์ก็ต่อเมื่อ x=y=z แทนในสมการที่สอง n²=4n ได้ n=4 ดังนั้น x=y=z=4',

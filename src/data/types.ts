@@ -6,6 +6,7 @@ export interface Question {
   difficulty: Difficulty
   topic: string
   questionText: string
+  questionTranslationTh: string
   choices?: string[]
   answer: string
   explanation: string

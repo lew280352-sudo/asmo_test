@@ -78,7 +78,8 @@ export default function Review() {
               </p>
               {!correct && (
                 <div className="mt-2 rounded-lg bg-white p-3 text-sm">
-                  <p className="font-medium text-emerald-700">เฉลย: {q.answer}</p>
+                  <p className="text-slate-500 italic">{q.questionTranslationTh}</p>
+                  <p className="mt-2 font-medium text-emerald-700">เฉลย: {q.answer}</p>
                   <p className="mt-1 text-slate-600">{q.explanation}</p>
                 </div>
               )}
