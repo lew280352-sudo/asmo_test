@@ -48,7 +48,7 @@ export default function ProfileOnboarding({ onReady }: { onReady: (profile: Prof
             value={name}
             onChange={(e) => setName(e.target.value)}
             placeholder="ชื่อของคุณ"
-            className="w-full rounded-lg border border-slate-300 px-4 py-2.5 text-sm focus:border-indigo-500 focus:outline-none"
+            className="w-full rounded-lg border border-slate-300 px-4 py-2.5 text-sm text-slate-900 focus:border-indigo-500 focus:outline-none"
             autoFocus
           />
           <button

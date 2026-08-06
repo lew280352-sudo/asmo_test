@@ -161,7 +161,7 @@ export default function Exam() {
             value={answers[q.id] ?? ''}
             onChange={(e) => setAnswers((a) => ({ ...a, [q.id]: e.target.value }))}
             placeholder="พิมพ์คำตอบของคุณ"
-            className="mt-4 w-full rounded-lg border border-slate-300 px-4 py-2.5 text-sm focus:border-indigo-500 focus:outline-none"
+            className="mt-4 w-full rounded-lg border border-slate-300 px-4 py-2.5 text-sm text-slate-900 focus:border-indigo-500 focus:outline-none"
           />
         )}
       </div>
