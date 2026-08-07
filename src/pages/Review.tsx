@@ -73,14 +73,14 @@ export default function Review() {
                 </span>
               </div>
               <p className="text-sm break-words text-slate-900">{q.questionText}</p>
+              <p className="mt-1 text-sm break-words italic text-slate-500">{q.questionTranslationTh}</p>
               <p className="mt-2 text-sm text-slate-600">
                 คำตอบของคุณ: <span className="font-medium">{a?.userAnswer ?? '(ไม่ได้ตอบ)'}</span>
               </p>
               {!correct && (
                 <div className="mt-2 rounded-lg bg-white p-3 text-sm">
-                  <p className="text-slate-500 italic">{q.questionTranslationTh}</p>
-                  <p className="mt-2 font-medium text-emerald-700">เฉลย: {q.answer}</p>
-                  <p className="mt-1 text-slate-600">{q.explanation}</p>
+                  <p className="font-medium text-emerald-700">เฉลย: {q.answer}</p>
+                  <p className="mt-1 whitespace-pre-line text-slate-600">{q.explanation}</p>
                 </div>
               )}
             </div>
