@@ -7,6 +7,7 @@ import Review from './pages/Review'
 import History from './pages/History'
 import Stats from './pages/Stats'
 import Learn from './pages/Learn'
+import DailyLesson from './pages/DailyLesson'
 import ProfileOnboarding from './pages/ProfileOnboarding'
 import { clearActiveProfileId, getActiveProfile, type Profile } from './lib/profile'
 
@@ -70,6 +71,7 @@ export default function App() {
           <Route path="/history" element={<History />} />
           <Route path="/stats" element={<Stats />} />
           <Route path="/learn" element={<Learn />} />
+          <Route path="/lesson" element={<DailyLesson />} />
           <Route path="*" element={<Navigate to="/" replace />} />
         </Routes>
       </Layout>

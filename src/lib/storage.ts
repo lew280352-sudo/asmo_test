@@ -20,6 +20,7 @@ export interface Attempt {
 
 const ATTEMPTS_KEY = 'asmo_attempts'
 const DAILY_KEY_PREFIX = 'asmo_daily_dates_'
+const LESSON_KEY_PREFIX = 'asmo_lesson_dates_'
 
 function loadAllAttempts(): Attempt[] {
   try {
@@ -45,23 +46,39 @@ export function clearAttempts(profileId: string): void {
   localStorage.setItem(ATTEMPTS_KEY, JSON.stringify(remaining))
 }
 
-export function loadCompletedDailyDates(profileId: string): string[] {
+function loadDateList(key: string): string[] {
   try {
-    const raw = localStorage.getItem(DAILY_KEY_PREFIX + profileId)
+    const raw = localStorage.getItem(key)
     return raw ? (JSON.parse(raw) as string[]) : []
   } catch {
     return []
   }
 }
 
-export function markDailyCompleted(profileId: string, dateKey: string): void {
-  const dates = loadCompletedDailyDates(profileId)
+function markDateCompleted(key: string, dateKey: string): void {
+  const dates = loadDateList(key)
   if (!dates.includes(dateKey)) {
     dates.push(dateKey)
-    localStorage.setItem(DAILY_KEY_PREFIX + profileId, JSON.stringify(dates))
+    localStorage.setItem(key, JSON.stringify(dates))
   }
+}
+
+export function loadCompletedDailyDates(profileId: string): string[] {
+  return loadDateList(DAILY_KEY_PREFIX + profileId)
+}
+
+export function markDailyCompleted(profileId: string, dateKey: string): void {
+  markDateCompleted(DAILY_KEY_PREFIX + profileId, dateKey)
 }
 
 export function isDailyCompleted(profileId: string, dateKey: string): boolean {
   return loadCompletedDailyDates(profileId).includes(dateKey)
+}
+
+export function markLessonCompleted(profileId: string, dateKey: string): void {
+  markDateCompleted(LESSON_KEY_PREFIX + profileId, dateKey)
+}
+
+export function isLessonCompleted(profileId: string, dateKey: string): boolean {
+  return loadDateList(LESSON_KEY_PREFIX + profileId).includes(dateKey)
 }

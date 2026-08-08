@@ -1,8 +1,8 @@
 import { Link, useNavigate } from 'react-router-dom'
 import { EXAM_SETS, QUESTIONS } from '../data/questions'
 import { timeLimitMinutes } from '../data/types'
-import { getDailyQuestions, todayDateKey } from '../lib/dailyRandom'
-import { isDailyCompleted } from '../lib/storage'
+import { getDailyLessonQuestions, getDailyQuestions, todayDateKey } from '../lib/dailyRandom'
+import { isDailyCompleted, isLessonCompleted } from '../lib/storage'
 import { getActiveProfile } from '../lib/profile'
 
 export default function Home() {
@@ -10,6 +10,8 @@ export default function Home() {
   const profile = getActiveProfile()!
   const dateKey = todayDateKey()
   const dailyDone = isDailyCompleted(profile.id, dateKey)
+  const lessonDone = isLessonCompleted(profile.id, dateKey)
+  const lessonCount = getDailyLessonQuestions(dateKey).length
 
   function startDaily() {
     const questions = getDailyQuestions(dateKey)
@@ -45,6 +47,24 @@ export default function Home() {
         {dailyDone && (
           <p className="mt-2 text-xs text-indigo-600">คุณทำชุดวันนี้ไปแล้ว ✓ ทำซ้ำได้ ระบบจะบันทึกทุกครั้งที่ทำ</p>
         )}
+      </section>
+
+      <section className="rounded-xl border border-emerald-200 bg-emerald-50 p-5">
+        <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
+          <div className="min-w-0">
+            <h2 className="text-lg font-semibold text-emerald-900">📖 บทเรียนรายวัน</h2>
+            <p className="mt-1 text-sm text-emerald-700">
+              สุ่มโจทย์ {lessonCount} ข้อทุกวัน สอนวิธีทำแบบละเอียดทีละขั้นตอน ไม่จับเวลา · {dateKey}
+            </p>
+          </div>
+          <Link
+            to="/lesson"
+            className="shrink-0 rounded-lg bg-emerald-600 px-4 py-2 text-center text-sm font-medium text-white hover:bg-emerald-700"
+          >
+            {lessonDone ? 'ทบทวนอีกครั้ง' : 'เริ่มเรียน'}
+          </Link>
+        </div>
+        {lessonDone && <p className="mt-2 text-xs text-emerald-700">เรียนจบบทเรียนวันนี้แล้ว ✓</p>}
       </section>
 
       <Link

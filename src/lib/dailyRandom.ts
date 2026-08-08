@@ -2,6 +2,7 @@ import { QUESTIONS } from '../data/questions'
 import type { Question } from '../data/types'
 
 const DAILY_QUESTION_COUNT = 10
+const DAILY_LESSON_QUESTION_COUNT = 5
 
 function hashString(str: string): number {
   let h = 0
@@ -31,13 +32,22 @@ export function todayDateKey(): string {
   return `${y}-${m}-${day}`
 }
 
-export function getDailyQuestions(dateKey: string): Question[] {
-  const rng = mulberry32(hashString(dateKey))
+function seededShuffle(seed: string): Question[] {
+  const rng = mulberry32(hashString(seed))
   const pool = [...QUESTIONS]
   // Fisher-Yates shuffle using seeded rng
   for (let i = pool.length - 1; i > 0; i--) {
     const j = Math.floor(rng() * (i + 1))
     ;[pool[i], pool[j]] = [pool[j], pool[i]]
   }
-  return pool.slice(0, Math.min(DAILY_QUESTION_COUNT, pool.length))
+  return pool
+}
+
+export function getDailyQuestions(dateKey: string): Question[] {
+  return seededShuffle(dateKey).slice(0, DAILY_QUESTION_COUNT)
+}
+
+export function getDailyLessonQuestions(dateKey: string): Question[] {
+  // different salt so the daily lesson set doesn't just mirror the daily test set
+  return seededShuffle(`lesson-${dateKey}`).slice(0, DAILY_LESSON_QUESTION_COUNT)
 }

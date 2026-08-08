@@ -215,7 +215,7 @@ export default function Exam() {
         </div>
       </div>
 
-      {activePanel !== 'formula' && (
+      {state.setId === 'daily' && activePanel !== 'formula' && (
         <button
           onClick={() => setActivePanel('formula')}
           className="fixed bottom-24 right-5 z-40 flex items-center gap-1.5 rounded-full bg-slate-900 px-4 py-3 text-sm font-medium text-white shadow-lg hover:bg-slate-800"
