@@ -2,8 +2,7 @@ import { useEffect, useRef, useState } from 'react'
 
 type Tool = 'pen' | 'eraser'
 
-export default function Scratchpad() {
-  const [isOpen, setIsOpen] = useState(false)
+export default function Scratchpad({ isOpen, onClose }: { isOpen: boolean; onClose: () => void }) {
   const canvasRef = useRef<HTMLCanvasElement | null>(null)
   const ctxRef = useRef<CanvasRenderingContext2D | null>(null)
   const drawingRef = useRef(false)
@@ -66,16 +65,7 @@ export default function Scratchpad() {
     ctx.clearRect(0, 0, canvas.width, canvas.height)
   }
 
-  if (!isOpen) {
-    return (
-      <button
-        onClick={() => setIsOpen(true)}
-        className="fixed bottom-5 right-5 z-40 flex items-center gap-1.5 rounded-full bg-slate-900 px-4 py-3 text-sm font-medium text-white shadow-lg hover:bg-slate-800"
-      >
-        ✏️ กระดาษทด
-      </button>
-    )
-  }
+  if (!isOpen) return null
 
   return (
     <div className="fixed inset-x-0 bottom-0 z-40 flex h-[50vh] flex-col overflow-hidden rounded-t-2xl border-t border-slate-200 bg-slate-50 shadow-2xl">
@@ -109,10 +99,7 @@ export default function Scratchpad() {
           >
             ล้างทั้งหมด
           </button>
-          <button
-            onClick={() => setIsOpen(false)}
-            className="rounded-lg bg-slate-900 px-3 py-1.5 text-sm font-medium text-white"
-          >
+          <button onClick={onClose} className="rounded-lg bg-slate-900 px-3 py-1.5 text-sm font-medium text-white">
             ปิด
           </button>
         </div>

@@ -5,6 +5,7 @@ import { DIFFICULTY_LABEL } from '../data/types'
 import { saveAttempt, markDailyCompleted, type Attempt } from '../lib/storage'
 import { getActiveProfile } from '../lib/profile'
 import Scratchpad from '../components/Scratchpad'
+import FormulaSheet from '../components/FormulaSheet'
 
 interface ExamState {
   questions: Question[]
@@ -23,6 +24,7 @@ export default function Exam() {
   const [answers, setAnswers] = useState<Record<string, string>>({})
   const [secondsLeft, setSecondsLeft] = useState(() => (state ? state.timeLimitMinutes * 60 : 0))
   const [current, setCurrent] = useState(0)
+  const [activePanel, setActivePanel] = useState<'none' | 'scratch' | 'formula'>('none')
   const submittedRef = useRef(false)
 
   const questions = useMemo(() => state?.questions ?? [], [state])
@@ -213,7 +215,25 @@ export default function Exam() {
         </div>
       </div>
 
-      <Scratchpad />
+      {activePanel !== 'formula' && (
+        <button
+          onClick={() => setActivePanel('formula')}
+          className="fixed bottom-24 right-5 z-40 flex items-center gap-1.5 rounded-full bg-slate-900 px-4 py-3 text-sm font-medium text-white shadow-lg hover:bg-slate-800"
+        >
+          📘 สูตร
+        </button>
+      )}
+      {activePanel !== 'scratch' && (
+        <button
+          onClick={() => setActivePanel('scratch')}
+          className="fixed bottom-5 right-5 z-40 flex items-center gap-1.5 rounded-full bg-slate-900 px-4 py-3 text-sm font-medium text-white shadow-lg hover:bg-slate-800"
+        >
+          ✏️ กระดาษทด
+        </button>
+      )}
+
+      <Scratchpad isOpen={activePanel === 'scratch'} onClose={() => setActivePanel('none')} />
+      <FormulaSheet isOpen={activePanel === 'formula'} onClose={() => setActivePanel('none')} />
     </div>
   )
 }
