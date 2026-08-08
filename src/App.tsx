@@ -6,6 +6,7 @@ import Exam from './pages/Exam'
 import Review from './pages/Review'
 import History from './pages/History'
 import Stats from './pages/Stats'
+import Learn from './pages/Learn'
 import ProfileOnboarding from './pages/ProfileOnboarding'
 import { clearActiveProfileId, getActiveProfile, type Profile } from './lib/profile'
 
@@ -26,6 +27,9 @@ function Layout({
             ASMO คณิต ติวเข้ม
           </Link>
           <div className="flex shrink-0 items-center gap-3 text-sm">
+            <Link to="/learn" className="text-slate-500 hover:text-indigo-600">
+              สูตร
+            </Link>
             <Link to="/stats" className="text-slate-500 hover:text-indigo-600">
               สถิติ
             </Link>
@@ -65,6 +69,7 @@ export default function App() {
           <Route path="/review" element={<Review />} />
           <Route path="/history" element={<History />} />
           <Route path="/stats" element={<Stats />} />
+          <Route path="/learn" element={<Learn />} />
           <Route path="*" element={<Navigate to="/" replace />} />
         </Routes>
       </Layout>

@@ -47,6 +47,19 @@ export default function Home() {
         )}
       </section>
 
+      <Link
+        to="/learn"
+        className="block rounded-xl border border-slate-200 bg-white p-4 transition hover:border-indigo-300 hover:shadow-sm"
+      >
+        <div className="flex items-center justify-between gap-3">
+          <div className="min-w-0">
+            <h3 className="font-medium text-slate-900">📘 สูตรและเนื้อหาที่ต้องรู้</h3>
+            <p className="mt-0.5 text-sm text-slate-500">รวมสูตรทุกหัวข้อที่ใช้ในข้อสอบ ก่อนลงมือฝึกทำโจทย์</p>
+          </div>
+          <span className="shrink-0 text-slate-400">→</span>
+        </div>
+      </Link>
+
       <section>
         <h2 className="mb-3 text-base font-semibold text-slate-800">ชุดข้อสอบ ASMO คณิต</h2>
         <div className="space-y-3">
