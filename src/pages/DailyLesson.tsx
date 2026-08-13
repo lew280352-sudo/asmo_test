@@ -1,14 +1,17 @@
 import { useState } from 'react'
 import { Link } from 'react-router-dom'
+import { questionsForTrack } from '../data/catalog'
 import { DIFFICULTY_LABEL } from '../data/types'
 import { getDailyLessonQuestions, todayDateKey } from '../lib/dailyRandom'
 import { markLessonCompleted } from '../lib/storage'
 import { getActiveProfile } from '../lib/profile'
+import { getActiveTrack } from '../lib/track'
 
 export default function DailyLesson() {
   const profile = getActiveProfile()!
+  const track = getActiveTrack(profile.id)!
   const dateKey = todayDateKey()
-  const [questions] = useState(() => getDailyLessonQuestions(dateKey))
+  const [questions] = useState(() => getDailyLessonQuestions(dateKey, questionsForTrack(track.id)))
   const [index, setIndex] = useState(0)
   const [selected, setSelected] = useState<string | null>(null)
   const [revealed, setRevealed] = useState(false)
@@ -19,7 +22,7 @@ export default function DailyLesson() {
 
   function handleNext() {
     if (isLast) {
-      markLessonCompleted(profile.id, dateKey)
+      markLessonCompleted(profile.id, track.id, dateKey)
       setFinished(true)
       return
     }
@@ -73,7 +76,9 @@ export default function DailyLesson() {
           <span className="rounded-full bg-slate-100 px-2 py-0.5">{q.topic}</span>
         </div>
         <p className="text-base leading-relaxed text-slate-900 break-words">{q.questionText}</p>
-        <p className="mt-1 text-sm italic text-slate-500 break-words">{q.questionTranslationTh}</p>
+        {q.questionTranslationTh && (
+          <p className="mt-1 text-sm italic text-slate-500 break-words">{q.questionTranslationTh}</p>
+        )}
 
         {q.choices ? (
           <div className="mt-4 space-y-2">

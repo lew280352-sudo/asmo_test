@@ -1,5 +1,5 @@
 import { useNavigate, useParams, Link } from 'react-router-dom'
-import { EXAM_SETS, QUESTIONS } from '../data/questions'
+import { EXAM_SETS, QUESTIONS } from '../data/catalog'
 import { DIFFICULTY_LABEL, PART_LABEL, timeLimitMinutes, type PartKey } from '../data/types'
 
 const PARTS: PartKey[] = ['easy', 'medium', 'hard', 'all']

@@ -1,20 +1,29 @@
+import { useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
-import { EXAM_SETS, QUESTIONS } from '../data/questions'
+import { examSetsForTrack, questionsForTrack } from '../data/catalog'
 import { timeLimitMinutes } from '../data/types'
 import { getDailyLessonQuestions, getDailyQuestions, todayDateKey } from '../lib/dailyRandom'
 import { isDailyCompleted, isLessonCompleted } from '../lib/storage'
 import { getActiveProfile } from '../lib/profile'
+import { getActiveTrack } from '../lib/track'
 
 export default function Home() {
   const navigate = useNavigate()
   const profile = getActiveProfile()!
+  const track = getActiveTrack(profile.id)!
   const dateKey = todayDateKey()
-  const dailyDone = isDailyCompleted(profile.id, dateKey)
-  const lessonDone = isLessonCompleted(profile.id, dateKey)
-  const lessonCount = getDailyLessonQuestions(dateKey).length
+  const dailyDone = isDailyCompleted(profile.id, track.id, dateKey)
+  const lessonDone = isLessonCompleted(profile.id, track.id, dateKey)
+
+  const trackQuestions = questionsForTrack(track.id)
+  const trackSets = examSetsForTrack(track.id)
+  const lessonCount = getDailyLessonQuestions(dateKey, trackQuestions).length
+
+  const [subjectFilter, setSubjectFilter] = useState<string | null>(null)
+  const visibleSets = subjectFilter ? trackSets.filter((s) => s.subject === subjectFilter) : trackSets
 
   function startDaily() {
-    const questions = getDailyQuestions(dateKey)
+    const questions = getDailyQuestions(dateKey, trackQuestions)
     navigate('/exam', {
       state: {
         questions,
@@ -34,7 +43,7 @@ export default function Home() {
           <div className="min-w-0">
             <h2 className="text-lg font-semibold text-indigo-900">ทดสอบสุ่มรายวัน</h2>
             <p className="mt-1 text-sm text-indigo-700">
-              โจทย์ 10 ข้อ สุ่มใหม่ทุกวันจากคลังข้อสอบทั้งหมด · {dateKey}
+              โจทย์ 10 ข้อ สุ่มใหม่ทุกวันจากคลังข้อสอบ{track.shortName} · {dateKey}
             </p>
           </div>
           <button
@@ -81,10 +90,37 @@ export default function Home() {
       </Link>
 
       <section>
-        <h2 className="mb-3 text-base font-semibold text-slate-800">ชุดข้อสอบ ASMO คณิต</h2>
+        <div className="mb-3 flex flex-wrap items-center justify-between gap-2">
+          <h2 className="text-base font-semibold text-slate-800">ชุดข้อสอบ {track.name}</h2>
+          {track.subjects && (
+            <div className="flex flex-wrap gap-1.5">
+              <button
+                onClick={() => setSubjectFilter(null)}
+                className={
+                  'rounded-full px-3 py-1 text-xs font-medium ' +
+                  (subjectFilter === null ? 'bg-indigo-600 text-white' : 'bg-slate-100 text-slate-600')
+                }
+              >
+                ทั้งหมด
+              </button>
+              {track.subjects.map((subject) => (
+                <button
+                  key={subject}
+                  onClick={() => setSubjectFilter(subject)}
+                  className={
+                    'rounded-full px-3 py-1 text-xs font-medium ' +
+                    (subjectFilter === subject ? 'bg-indigo-600 text-white' : 'bg-slate-100 text-slate-600')
+                  }
+                >
+                  {subject}
+                </button>
+              ))}
+            </div>
+          )}
+        </div>
         <div className="space-y-3">
-          {EXAM_SETS.map((set) => {
-            const count = QUESTIONS.filter((q) => q.setId === set.id).length
+          {visibleSets.map((set) => {
+            const count = trackQuestions.filter((q) => q.setId === set.id).length
             return (
               <Link
                 key={set.id}
@@ -93,7 +129,14 @@ export default function Home() {
               >
                 <div className="flex flex-col gap-2 sm:flex-row sm:items-center sm:justify-between">
                   <div className="min-w-0">
-                    <h3 className="font-medium text-slate-900">{set.title}</h3>
+                    <div className="flex flex-wrap items-center gap-2">
+                      <h3 className="font-medium text-slate-900">{set.title}</h3>
+                      {set.subject && (
+                        <span className="rounded-full bg-indigo-50 px-2 py-0.5 text-xs text-indigo-600">
+                          {set.subject}
+                        </span>
+                      )}
+                    </div>
                     <p className="mt-0.5 text-sm text-slate-500">{set.description}</p>
                   </div>
                   <span className="shrink-0 self-start rounded-full bg-slate-100 px-3 py-1 text-xs text-slate-600 sm:self-auto">

@@ -3,18 +3,21 @@ import type { ExamSet, Question } from './types'
 export const EXAM_SETS: ExamSet[] = [
   {
     id: 's1',
+    trackId: 'asmo',
     title: 'ชุดที่ 1',
     grade: 'ม.4-ม.6',
     description: 'พีชคณิต เรขาคณิต ความน่าจะเป็น และทฤษฎีจำนวนพื้นฐาน',
   },
   {
     id: 's2',
+    trackId: 'asmo',
     title: 'ชุดที่ 2',
     grade: 'ม.4-ม.6',
     description: 'ฟังก์ชัน ลำดับ การจัดหมู่ และโจทย์ประยุกต์',
   },
   {
     id: 's3',
+    trackId: 'asmo',
     title: 'ชุดที่ 3 · โจทย์จากข้อสอบจริง',
     grade: 'ม.4-ม.6',
     description: 'คัดจากข้อสอบ ASMO / Road to ASMOPSS ระดับมัธยมปลายจริงย้อนหลัง (2019-2023)',

@@ -1,8 +1,9 @@
 import { Link } from 'react-router-dom'
-import { QUESTIONS } from '../data/questions'
+import { questionsForTrack } from '../data/catalog'
 import { DIFFICULTY_LABEL, type Difficulty } from '../data/types'
 import { loadAttempts } from '../lib/storage'
 import { getActiveProfile } from '../lib/profile'
+import { getActiveTrack } from '../lib/track'
 
 interface Tally {
   correct: number
@@ -73,7 +74,9 @@ function Meter({ label, tally, extra }: { label: string; tally: Tally; extra?: s
 
 export default function Stats() {
   const profile = getActiveProfile()!
-  const attempts = loadAttempts(profile.id)
+  const track = getActiveTrack(profile.id)!
+  const attempts = loadAttempts(profile.id, track.id)
+  const trackQuestions = questionsForTrack(track.id)
 
   const overall: Tally = { correct: 0, total: 0 }
   const byDifficulty: Record<Difficulty, Tally> = {
@@ -85,7 +88,7 @@ export default function Stats() {
 
   for (const attempt of attempts) {
     for (const a of attempt.answers) {
-      const question = QUESTIONS.find((q) => q.id === a.questionId)
+      const question = trackQuestions.find((q) => q.id === a.questionId)
       if (!question) continue
       overall.total += 1
       byDifficulty[question.difficulty].total += 1
@@ -112,6 +115,7 @@ export default function Stats() {
           ← กลับหน้าแรก
         </Link>
         <h2 className="mt-2 text-xl font-semibold text-slate-900">สถิติของ {profile.name}</h2>
+        <p className="text-xs text-slate-500">สนามสอบ {track.name}</p>
       </div>
 
       {attempts.length === 0 ? (

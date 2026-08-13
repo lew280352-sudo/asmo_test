@@ -4,6 +4,7 @@ import type { Difficulty, PartKey, Question } from '../data/types'
 import { DIFFICULTY_LABEL } from '../data/types'
 import { saveAttempt, markDailyCompleted, type Attempt } from '../lib/storage'
 import { getActiveProfile } from '../lib/profile'
+import { getActiveTrack } from '../lib/track'
 import Scratchpad from '../components/Scratchpad'
 import FormulaSheet from '../components/FormulaSheet'
 
@@ -82,9 +83,12 @@ export default function Exam() {
     const score = attemptAnswers.filter((a) => a.correct).length
     const timeUsedSec = state!.timeLimitMinutes * 60 - secondsLeft
 
+    const profile = getActiveProfile()!
+    const track = getActiveTrack(profile.id)!
     const attempt: Attempt = {
       id: `${Date.now()}`,
-      profileId: getActiveProfile()!.id,
+      profileId: profile.id,
+      trackId: track.id,
       setId: state!.setId,
       part: state!.part === 'all' ? 'all' : (state!.part as Difficulty),
       dateISO: new Date().toISOString(),
@@ -94,7 +98,7 @@ export default function Exam() {
       answers: attemptAnswers,
     }
     saveAttempt(attempt)
-    if (state!.dateKey) markDailyCompleted(attempt.profileId, state!.dateKey)
+    if (state!.dateKey) markDailyCompleted(attempt.profileId, attempt.trackId, state!.dateKey)
 
     navigate('/review', { state: { attempt, questions, title: state!.title }, replace: true })
   }

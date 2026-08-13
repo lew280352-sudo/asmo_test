@@ -1,4 +1,3 @@
-import { QUESTIONS } from '../data/questions'
 import type { Question } from '../data/types'
 
 const DAILY_QUESTION_COUNT = 10
@@ -32,22 +31,22 @@ export function todayDateKey(): string {
   return `${y}-${m}-${day}`
 }
 
-function seededShuffle(seed: string): Question[] {
+function seededShuffle(seed: string, pool: Question[]): Question[] {
   const rng = mulberry32(hashString(seed))
-  const pool = [...QUESTIONS]
+  const shuffled = [...pool]
   // Fisher-Yates shuffle using seeded rng
-  for (let i = pool.length - 1; i > 0; i--) {
+  for (let i = shuffled.length - 1; i > 0; i--) {
     const j = Math.floor(rng() * (i + 1))
-    ;[pool[i], pool[j]] = [pool[j], pool[i]]
+    ;[shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]]
   }
-  return pool
+  return shuffled
 }
 
-export function getDailyQuestions(dateKey: string): Question[] {
-  return seededShuffle(dateKey).slice(0, DAILY_QUESTION_COUNT)
+export function getDailyQuestions(dateKey: string, pool: Question[]): Question[] {
+  return seededShuffle(dateKey, pool).slice(0, Math.min(DAILY_QUESTION_COUNT, pool.length))
 }
 
-export function getDailyLessonQuestions(dateKey: string): Question[] {
+export function getDailyLessonQuestions(dateKey: string, pool: Question[]): Question[] {
   // different salt so the daily lesson set doesn't just mirror the daily test set
-  return seededShuffle(`lesson-${dateKey}`).slice(0, DAILY_LESSON_QUESTION_COUNT)
+  return seededShuffle(`lesson-${dateKey}`, pool).slice(0, Math.min(DAILY_LESSON_QUESTION_COUNT, pool.length))
 }

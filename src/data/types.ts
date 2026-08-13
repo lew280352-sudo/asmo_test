@@ -1,12 +1,14 @@
 export type Difficulty = 'easy' | 'medium' | 'hard'
 
+export type TrackId = 'asmo' | 'posn'
+
 export interface Question {
   id: string
   setId: string
   difficulty: Difficulty
   topic: string
   questionText: string
-  questionTranslationTh: string
+  questionTranslationTh?: string
   choices?: string[]
   answer: string
   explanation: string
@@ -15,6 +17,8 @@ export interface Question {
 
 export interface ExamSet {
   id: string
+  trackId: TrackId
+  subject?: string
   title: string
   grade: string
   description: string

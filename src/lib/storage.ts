@@ -1,4 +1,4 @@
-import type { Difficulty } from '../data/types'
+import type { Difficulty, TrackId } from '../data/types'
 
 export interface AttemptAnswer {
   questionId: string
@@ -9,6 +9,7 @@ export interface AttemptAnswer {
 export interface Attempt {
   id: string
   profileId: string
+  trackId: TrackId
   setId: string | 'daily'
   part: Difficulty | 'all'
   dateISO: string
@@ -31,8 +32,8 @@ function loadAllAttempts(): Attempt[] {
   }
 }
 
-export function loadAttempts(profileId: string): Attempt[] {
-  return loadAllAttempts().filter((a) => a.profileId === profileId)
+export function loadAttempts(profileId: string, trackId: TrackId): Attempt[] {
+  return loadAllAttempts().filter((a) => a.profileId === profileId && a.trackId === trackId)
 }
 
 export function saveAttempt(attempt: Attempt): void {
@@ -41,8 +42,8 @@ export function saveAttempt(attempt: Attempt): void {
   localStorage.setItem(ATTEMPTS_KEY, JSON.stringify(attempts.slice(0, 500)))
 }
 
-export function clearAttempts(profileId: string): void {
-  const remaining = loadAllAttempts().filter((a) => a.profileId !== profileId)
+export function clearAttempts(profileId: string, trackId: TrackId): void {
+  const remaining = loadAllAttempts().filter((a) => !(a.profileId === profileId && a.trackId === trackId))
   localStorage.setItem(ATTEMPTS_KEY, JSON.stringify(remaining))
 }
 
@@ -63,22 +64,22 @@ function markDateCompleted(key: string, dateKey: string): void {
   }
 }
 
-export function loadCompletedDailyDates(profileId: string): string[] {
-  return loadDateList(DAILY_KEY_PREFIX + profileId)
+export function loadCompletedDailyDates(profileId: string, trackId: TrackId): string[] {
+  return loadDateList(DAILY_KEY_PREFIX + profileId + '_' + trackId)
 }
 
-export function markDailyCompleted(profileId: string, dateKey: string): void {
-  markDateCompleted(DAILY_KEY_PREFIX + profileId, dateKey)
+export function markDailyCompleted(profileId: string, trackId: TrackId, dateKey: string): void {
+  markDateCompleted(DAILY_KEY_PREFIX + profileId + '_' + trackId, dateKey)
 }
 
-export function isDailyCompleted(profileId: string, dateKey: string): boolean {
-  return loadCompletedDailyDates(profileId).includes(dateKey)
+export function isDailyCompleted(profileId: string, trackId: TrackId, dateKey: string): boolean {
+  return loadCompletedDailyDates(profileId, trackId).includes(dateKey)
 }
 
-export function markLessonCompleted(profileId: string, dateKey: string): void {
-  markDateCompleted(LESSON_KEY_PREFIX + profileId, dateKey)
+export function markLessonCompleted(profileId: string, trackId: TrackId, dateKey: string): void {
+  markDateCompleted(LESSON_KEY_PREFIX + profileId + '_' + trackId, dateKey)
 }
 
-export function isLessonCompleted(profileId: string, dateKey: string): boolean {
-  return loadDateList(LESSON_KEY_PREFIX + profileId).includes(dateKey)
+export function isLessonCompleted(profileId: string, trackId: TrackId, dateKey: string): boolean {
+  return loadDateList(LESSON_KEY_PREFIX + profileId + '_' + trackId).includes(dateKey)
 }
