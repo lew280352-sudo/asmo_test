@@ -12,7 +12,7 @@ export default function TrackSelect({ profileId, onSelect }: { profileId: string
     <div className="flex min-h-svh items-center justify-center bg-slate-50 px-4">
       <div className="w-full max-w-sm space-y-4">
         <div className="text-center">
-          <h1 className="text-lg font-semibold text-indigo-600">ASMO คณิต ติวเข้ม</h1>
+          <h1 className="text-lg font-semibold text-indigo-600">ติวเข้มโอลิมปิก</h1>
           <p className="mt-1 text-sm text-slate-500">อยากฝึกทำข้อสอบสนามไหน?</p>
         </div>
 

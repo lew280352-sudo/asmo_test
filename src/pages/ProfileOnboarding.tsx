@@ -19,7 +19,7 @@ export default function ProfileOnboarding({ onReady }: { onReady: (profile: Prof
   return (
     <div className="flex min-h-svh items-center justify-center bg-slate-50 px-4">
       <div className="w-full max-w-sm rounded-2xl border border-slate-200 bg-white p-6 shadow-sm">
-        <h1 className="text-center text-lg font-semibold text-indigo-600">ASMO คณิต ติวเข้ม</h1>
+        <h1 className="text-center text-lg font-semibold text-indigo-600">ติวเข้มโอลิมปิก</h1>
         <p className="mt-1 text-center text-sm text-slate-500">เข้าสู่ระบบเพื่อเริ่มฝึกทำโจทย์</p>
 
         {profiles.length > 0 && (

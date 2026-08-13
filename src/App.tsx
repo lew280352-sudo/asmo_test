@@ -32,7 +32,7 @@ function Layout({
       <header className="border-b border-slate-200 bg-white">
         <div className="mx-auto flex max-w-3xl flex-wrap items-center justify-between gap-x-3 gap-y-2 px-4 py-3">
           <Link to="/" className="min-w-0 truncate text-lg font-semibold text-indigo-600">
-            ASMO คณิต ติวเข้ม
+            ติวเข้มโอลิมปิก
           </Link>
           <div className="flex shrink-0 flex-wrap items-center justify-end gap-x-3 gap-y-1 text-sm">
             <button
