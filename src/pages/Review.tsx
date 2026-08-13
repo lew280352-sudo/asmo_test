@@ -72,7 +72,7 @@ export default function Review() {
                   {correct ? 'ถูก' : 'ผิด'}
                 </span>
               </div>
-              <p className="text-sm break-words text-slate-900">{q.questionText}</p>
+              <p className="whitespace-pre-line text-sm break-words text-slate-900">{q.questionText}</p>
               {q.questionTranslationTh && (
                 <p className="mt-1 text-sm break-words italic text-slate-500">{q.questionTranslationTh}</p>
               )}

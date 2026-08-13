@@ -109,7 +109,7 @@ export default function Exam() {
   const lowTime = secondsLeft <= 60
 
   return (
-    <div className="space-y-4">
+    <div className="space-y-4 pb-24">
       <div className="flex items-center justify-between gap-3">
         <div className="min-w-0">
           <h2 className="truncate text-base font-semibold text-slate-900">{state.title}</h2>
@@ -139,7 +139,7 @@ export default function Exam() {
           <span className="rounded-full bg-slate-100 px-2 py-0.5">{DIFFICULTY_LABEL[q.difficulty]}</span>
           <span className="rounded-full bg-slate-100 px-2 py-0.5">{q.topic}</span>
         </div>
-        <p className="text-base leading-relaxed text-slate-900 break-words">{q.questionText}</p>
+        <p className="whitespace-pre-line text-base leading-relaxed text-slate-900 break-words">{q.questionText}</p>
 
         {q.choices ? (
           <div className="mt-4 space-y-2">

@@ -75,7 +75,7 @@ export default function DailyLesson() {
           <span className="rounded-full bg-slate-100 px-2 py-0.5">{DIFFICULTY_LABEL[q.difficulty]}</span>
           <span className="rounded-full bg-slate-100 px-2 py-0.5">{q.topic}</span>
         </div>
-        <p className="text-base leading-relaxed text-slate-900 break-words">{q.questionText}</p>
+        <p className="whitespace-pre-line text-base leading-relaxed text-slate-900 break-words">{q.questionText}</p>
         {q.questionTranslationTh && (
           <p className="mt-1 text-sm italic text-slate-500 break-words">{q.questionTranslationTh}</p>
         )}
