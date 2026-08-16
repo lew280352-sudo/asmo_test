@@ -376,8 +376,9 @@ export const POSN_QUESTIONS: Question[] = [
     setId: 'posn-cs-2',
     difficulty: 'easy',
     topic: 'การอ่านซูโดโค้ด (Pseudocode Tracing)',
-    questionText:
-      'โปรแกรมต่อไปนี้แสดงคำว่า hello กี่ครั้ง\ni = 0\nn = 10\nwhile i < n:\n    print(\'hello\')\n    n = n - 1\n    i = i + 1',
+    questionText: 'โปรแกรมต่อไปนี้แสดงคำว่า hello กี่ครั้ง',
+    codeSnippet: "i = 0\nn = 10\nwhile i < n:\n    print('hello')\n    n = n - 1\n    i = i + 1",
+    codeLang: 'python',
     choices: ['4', '5', '9', '10'],
     answer: '5',
     explanation:
@@ -403,8 +404,10 @@ export const POSN_QUESTIONS: Question[] = [
     setId: 'posn-cs-2',
     difficulty: 'medium',
     topic: 'การอ่านโค้ด (Python Tracing)',
-    questionText:
-      'โปรแกรมต่อไปนี้ จะแสดงผลลัพธ์ตรงกับข้อใด\nx = 67\nwhile(x > 24):\n    x = x - 2\nif(x<23):\n    print("A")\nelif(x==23):\n    print("B")\nelif(x>23):\n    print("C")\nelse:\n    print("D")',
+    questionText: 'โปรแกรมต่อไปนี้ จะแสดงผลลัพธ์ตรงกับข้อใด',
+    codeSnippet:
+      'x = 67\nwhile(x > 24):\n    x = x - 2\nif(x<23):\n    print("A")\nelif(x==23):\n    print("B")\nelif(x>23):\n    print("C")\nelse:\n    print("D")',
+    codeLang: 'python',
     choices: ['A', 'B', 'C', 'D'],
     answer: 'B',
     explanation:
@@ -416,8 +419,10 @@ export const POSN_QUESTIONS: Question[] = [
     setId: 'posn-cs-2',
     difficulty: 'medium',
     topic: 'การอ่านโค้ด (Python Tracing)',
-    questionText:
-      'โปรแกรมต่อไปนี้ จะแสดงผลลัพธ์ตรงกับข้อใด\nx = 25\ny = 67\nif( x > 64 and y > 88):\n    print("A")\nif( x > 64 and y < 88):\n    print("B")\nif( x < 64 and y < 88):\n    print("C")\nif( x < 64 and y > 88):\n    print("D")',
+    questionText: 'โปรแกรมต่อไปนี้ จะแสดงผลลัพธ์ตรงกับข้อใด',
+    codeSnippet:
+      'x = 25\ny = 67\nif( x > 64 and y > 88):\n    print("A")\nif( x > 64 and y < 88):\n    print("B")\nif( x < 64 and y < 88):\n    print("C")\nif( x < 64 and y > 88):\n    print("D")',
+    codeLang: 'python',
     choices: ['A', 'B', 'C', 'D'],
     answer: 'C',
     explanation:
@@ -429,8 +434,10 @@ export const POSN_QUESTIONS: Question[] = [
     setId: 'posn-cs-2',
     difficulty: 'medium',
     topic: 'การอ่านโค้ด (Python Tracing)',
-    questionText:
-      'โปรแกรมต่อไปนี้ จะแสดงผลลัพธ์ตรงกับข้อใด\nA = 1\nB = 2\nC = 2\nif A != B:\n    if  B!=A  and A==C:\n        X = A+B\n    elif  B!= C  or A != C:\n        X = B*C\n    else:\n        X = C-A\nelse:\n    X = A+B+C\nprint(X)',
+    questionText: 'โปรแกรมต่อไปนี้ จะแสดงผลลัพธ์ตรงกับข้อใด',
+    codeSnippet:
+      'A = 1\nB = 2\nC = 2\nif A != B:\n    if  B!=A  and A==C:\n        X = A+B\n    elif  B!= C  or A != C:\n        X = B*C\n    else:\n        X = C-A\nelse:\n    X = A+B+C\nprint(X)',
+    codeLang: 'python',
     choices: ['1', '3', '4', '5'],
     answer: '4',
     explanation:
@@ -442,8 +449,10 @@ export const POSN_QUESTIONS: Question[] = [
     setId: 'posn-cs-2',
     difficulty: 'medium',
     topic: 'การอ่านโค้ด (Python Tracing)',
-    questionText:
-      'โปรแกรมต่อไปนี้ จะแสดงผลลัพธ์ตรงกับข้อใด\nA = 55\nC = 5\nif A > 50:\n    C = C + 1\nelse:\n    if A >= 50 or A < 50:\n        C = C + 2\nif A==55 and C==5:\n    C = C + 3\nprint(C)',
+    questionText: 'โปรแกรมต่อไปนี้ จะแสดงผลลัพธ์ตรงกับข้อใด',
+    codeSnippet:
+      'A = 55\nC = 5\nif A > 50:\n    C = C + 1\nelse:\n    if A >= 50 or A < 50:\n        C = C + 2\nif A==55 and C==5:\n    C = C + 3\nprint(C)',
+    codeLang: 'python',
     choices: ['6', '7', '8', '9'],
     answer: '6',
     explanation:
@@ -500,8 +509,10 @@ export const POSN_QUESTIONS: Question[] = [
     setId: 'posn-cs-2',
     difficulty: 'hard',
     topic: 'การอ่านโค้ด (Python Tracing)',
-    questionText:
-      'โปรแกรมต่อไปนี้ จะแสดงผลลัพธ์ตรงกับข้อใด\nX = 5\nY = 10\ni = 1\nif i<X or X>Y:\n    while X <= Y:\n        answer = X+i*2\n        X=X+1\n        i=i+1\nelse:\n    answer = Y+X\nprint(answer)',
+    questionText: 'โปรแกรมต่อไปนี้ จะแสดงผลลัพธ์ตรงกับข้อใด',
+    codeSnippet:
+      'X = 5\nY = 10\ni = 1\nif i<X or X>Y:\n    while X <= Y:\n        answer = X+i*2\n        X=X+1\n        i=i+1\nelse:\n    answer = Y+X\nprint(answer)',
+    codeLang: 'python',
     choices: ['15', '18', '20', '22'],
     answer: '22',
     explanation:
@@ -513,8 +524,9 @@ export const POSN_QUESTIONS: Question[] = [
     setId: 'posn-cs-2',
     difficulty: 'hard',
     topic: 'การอ่านโค้ด (Python Tracing)',
-    questionText:
-      'โปรแกรมต่อไปนี้ จะแสดงผลลัพธ์ตรงกับข้อใด\nM=8\ni=0\nC=0\nwhile i <= M:\n    if i > 0:\n        C = C+1\n    if i > M/2:\n        C = C+2\n    i = i+2',
+    questionText: 'โปรแกรมต่อไปนี้ จะแสดงผลลัพธ์ตรงกับข้อใด',
+    codeSnippet: 'M=8\ni=0\nC=0\nwhile i <= M:\n    if i > 0:\n        C = C+1\n    if i > M/2:\n        C = C+2\n    i = i+2',
+    codeLang: 'python',
     choices: ['4', '5', '8', '11'],
     answer: '8',
     explanation:
@@ -526,8 +538,10 @@ export const POSN_QUESTIONS: Question[] = [
     setId: 'posn-cs-2',
     difficulty: 'hard',
     topic: 'การอ่านโค้ด (Python Tracing แบบซ้อน)',
-    questionText:
-      'โปรแกรมต่อไปนี้ จะแสดงผลลัพธ์ตรงกับข้อใด\nA = 80\nB = 70\nS = 10\nif A>=50 and B >= 50:\n    if A>= 60 and B >= 60:\n        if A>= 70 and B>= 70:\n            if A>=80 and B>= 80:\n                S = 4\n            S = 3\n        S = 2\n    S = 1\nprint(S)',
+    questionText: 'โปรแกรมต่อไปนี้ จะแสดงผลลัพธ์ตรงกับข้อใด',
+    codeSnippet:
+      'A = 80\nB = 70\nS = 10\nif A>=50 and B >= 50:\n    if A>= 60 and B >= 60:\n        if A>= 70 and B>= 70:\n            if A>=80 and B>= 80:\n                S = 4\n            S = 3\n        S = 2\n    S = 1\nprint(S)',
+    codeLang: 'python',
     choices: ['1', '2', '3', '4'],
     answer: '1',
     explanation:

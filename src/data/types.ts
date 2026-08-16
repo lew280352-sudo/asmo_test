@@ -9,6 +9,8 @@ export interface Question {
   topic: string
   questionText: string
   questionTranslationTh?: string
+  codeSnippet?: string
+  codeLang?: string
   choices?: string[]
   answer: string
   explanation: string

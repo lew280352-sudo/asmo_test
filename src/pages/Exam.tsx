@@ -7,6 +7,7 @@ import { getActiveProfile } from '../lib/profile'
 import { getActiveTrack } from '../lib/track'
 import Scratchpad from '../components/Scratchpad'
 import FormulaSheet from '../components/FormulaSheet'
+import CodeBlock from '../components/CodeBlock'
 
 interface ExamState {
   questions: Question[]
@@ -140,6 +141,7 @@ export default function Exam() {
           <span className="rounded-full bg-slate-100 px-2 py-0.5">{q.topic}</span>
         </div>
         <p className="whitespace-pre-line text-base leading-relaxed text-slate-900 break-words">{q.questionText}</p>
+        {q.codeSnippet && <CodeBlock code={q.codeSnippet} lang={q.codeLang} />}
 
         {q.choices ? (
           <div className="mt-4 space-y-2">

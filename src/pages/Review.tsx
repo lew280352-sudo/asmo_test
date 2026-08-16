@@ -2,6 +2,7 @@ import { Link, useLocation, useNavigate } from 'react-router-dom'
 import type { Question } from '../data/types'
 import { DIFFICULTY_LABEL } from '../data/types'
 import type { Attempt } from '../lib/storage'
+import CodeBlock from '../components/CodeBlock'
 
 interface ReviewState {
   attempt: Attempt
@@ -76,6 +77,7 @@ export default function Review() {
               {q.questionTranslationTh && (
                 <p className="mt-1 text-sm break-words italic text-slate-500">{q.questionTranslationTh}</p>
               )}
+              {q.codeSnippet && <CodeBlock code={q.codeSnippet} lang={q.codeLang} />}
               <p className="mt-2 text-sm text-slate-600">
                 คำตอบของคุณ: <span className="font-medium">{a?.userAnswer ?? '(ไม่ได้ตอบ)'}</span>
               </p>

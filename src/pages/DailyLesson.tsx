@@ -6,6 +6,7 @@ import { getDailyLessonQuestions, todayDateKey } from '../lib/dailyRandom'
 import { markLessonCompleted } from '../lib/storage'
 import { getActiveProfile } from '../lib/profile'
 import { getActiveTrack } from '../lib/track'
+import CodeBlock from '../components/CodeBlock'
 
 export default function DailyLesson() {
   const profile = getActiveProfile()!
@@ -79,6 +80,7 @@ export default function DailyLesson() {
         {q.questionTranslationTh && (
           <p className="mt-1 text-sm italic text-slate-500 break-words">{q.questionTranslationTh}</p>
         )}
+        {q.codeSnippet && <CodeBlock code={q.codeSnippet} lang={q.codeLang} />}
 
         {q.choices ? (
           <div className="mt-4 space-y-2">
