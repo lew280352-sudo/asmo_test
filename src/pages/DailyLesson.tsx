@@ -7,6 +7,7 @@ import { markLessonCompleted } from '../lib/storage'
 import { getActiveProfile } from '../lib/profile'
 import { getActiveTrack } from '../lib/track'
 import CodeBlock from '../components/CodeBlock'
+import Scratchpad from '../components/Scratchpad'
 
 export default function DailyLesson() {
   const profile = getActiveProfile()!
@@ -17,6 +18,8 @@ export default function DailyLesson() {
   const [selected, setSelected] = useState<string | null>(null)
   const [revealed, setRevealed] = useState(false)
   const [finished, setFinished] = useState(false)
+  const [showTranslation, setShowTranslation] = useState(false)
+  const [scratchOpen, setScratchOpen] = useState(false)
 
   const q = questions[index]
   const isLast = index === questions.length - 1
@@ -30,6 +33,7 @@ export default function DailyLesson() {
     setIndex((i) => i + 1)
     setSelected(null)
     setRevealed(false)
+    setShowTranslation(false)
   }
 
   if (finished) {
@@ -53,7 +57,7 @@ export default function DailyLesson() {
   }
 
   return (
-    <div className="space-y-4">
+    <div className="space-y-4 pb-24">
       <div>
         <Link to="/" className="text-sm text-indigo-600 hover:underline">
           ← กลับหน้าแรก
@@ -77,9 +81,17 @@ export default function DailyLesson() {
           <span className="rounded-full bg-slate-100 px-2 py-0.5">{q.topic}</span>
         </div>
         <p className="whitespace-pre-line text-base leading-relaxed text-slate-900 break-words">{q.questionText}</p>
-        {q.questionTranslationTh && (
-          <p className="mt-1 text-sm italic text-slate-500 break-words">{q.questionTranslationTh}</p>
-        )}
+        {q.questionTranslationTh &&
+          (showTranslation ? (
+            <p className="mt-1 text-sm italic text-slate-500 break-words">{q.questionTranslationTh}</p>
+          ) : (
+            <button
+              onClick={() => setShowTranslation(true)}
+              className="mt-2 rounded-full bg-slate-100 px-3 py-1 text-xs font-medium text-slate-600 hover:bg-indigo-50 hover:text-indigo-600"
+            >
+              🌐 แปลเป็นไทย
+            </button>
+          ))}
         {q.codeSnippet && <CodeBlock code={q.codeSnippet} lang={q.codeLang} />}
 
         {q.choices ? (
@@ -141,6 +153,16 @@ export default function DailyLesson() {
           </button>
         )}
       </div>
+
+      {!scratchOpen && (
+        <button
+          onClick={() => setScratchOpen(true)}
+          className="fixed bottom-5 right-5 z-40 flex items-center gap-1.5 rounded-full bg-slate-900 px-4 py-3 text-sm font-medium text-white shadow-lg hover:bg-slate-800"
+        >
+          ✏️ กระดาษทด
+        </button>
+      )}
+      <Scratchpad isOpen={scratchOpen} onClose={() => setScratchOpen(false)} />
     </div>
   )
 }
