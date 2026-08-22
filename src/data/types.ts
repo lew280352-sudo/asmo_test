@@ -1,6 +1,6 @@
 export type Difficulty = 'easy' | 'medium' | 'hard'
 
-export type TrackId = 'asmo' | 'posn'
+export type TrackId = 'asmo' | 'posn' | 'sat'
 
 export interface Question {
   id: string

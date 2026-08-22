@@ -22,6 +22,13 @@ export const TRACKS: Track[] = [
     description: 'ข้อสอบคัดเลือกเข้าค่าย สอวน คณิตศาสตร์และคอมพิวเตอร์',
     subjects: ['คณิตศาสตร์', 'คอมพิวเตอร์'],
   },
+  {
+    id: 'sat',
+    name: 'SAT Math',
+    shortName: 'SAT',
+    description: 'โจทย์คณิตศาสตร์แนว Digital SAT แต่งเองตาม official skill domain ของ College Board',
+    subjects: ['Algebra', 'Advanced Math', 'Problem-Solving & Data Analysis', 'Geometry & Trigonometry'],
+  },
 ]
 
 export function getTrack(id: TrackId): Track {
